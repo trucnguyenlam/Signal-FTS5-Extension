@@ -15,15 +15,21 @@ symbols in full-text search.
 # Extension Build/Usage Example
 
 ```sh
-cargo rustc --features extension -- --crate-type=cdylib
+cargo rustc --features extension -r --crate-type=cdylib
 ```
 
-Load extension from `./target/release/libsignal_tokenizer.dylib`.
+Load extension from `./target/release/libsignal_tokenizer.dylib`, note that you might need to specify entry point `signal_fts5_tokenizer_init`
 
 ```sql
 CREATE VIRTUAL TABLE
 fts
 USING fts5(content, tokenize='signal_tokenizer')
+```
+
+To build dynamic library for use in Android, please set up [cargo-ndk](https://github.com/bbqsrc/cargo-ndk), then you can build with this command
+
+```sh
+cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 -o ./jniLibs build --release
 ```
 
 # Generating headers
