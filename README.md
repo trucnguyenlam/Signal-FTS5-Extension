@@ -1,6 +1,6 @@
 # Overview
 
-Signal-FTS5-Extension is a C ABI library which exposes a
+[Signal-FTS5-Extension](https://darksi.de/13.sqlite-fts5-structure/) is a C ABI library which exposes a
 [FTS5](https://www.sqlite.org/fts5.html) tokenizer function named
 `signal_tokenizer` that:
 
@@ -18,7 +18,7 @@ symbols in full-text search.
 cargo rustc --features extension -r --crate-type=cdylib
 ```
 
-Load extension from `./target/release/libsignal_tokenizer.dylib`, note that you might need to specify entry point `signal_fts5_tokenizer_init`
+Load extension from `./target/release/libsignal_tokenizer.dylib`, note that you might need to specify entry point `sqlite3_signaltokenizer_init`
 
 ```sql
 CREATE VIRTUAL TABLE
@@ -30,6 +30,12 @@ To build dynamic library for use in Android, please set up [cargo-ndk](https://g
 
 ```sh
 cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 -o ./jniLibs build --release
+```
+
+To build dynamic library for use in Android, please set up [xcframework](https://github.com/trucnguyenlam/xcframework), then you can build with this command
+
+```sh
+xcframework --release --features extension
 ```
 
 # Generating headers

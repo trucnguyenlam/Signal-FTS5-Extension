@@ -10,7 +10,15 @@ edition = "2021"
 license = "AGPL-3.0-only"
 
 [lib]
-crate-type = ["rlib", "staticlib", "cdylib"]
+crate-type = ["staticlib", "cdylib"]
+
+[package.metadata.xcframework]
+include-dir = "include"
+lib-type = "staticlib"
+iOS = true
+macOS = true
+simulators = true
+zip = true
 
 [profile.release]
 lto = true

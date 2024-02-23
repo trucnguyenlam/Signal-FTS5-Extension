@@ -1,0 +1,4 @@
+module SignalTokenizer {
+    header "signal_fts5_tokenizer.h"
+    export *
+}
