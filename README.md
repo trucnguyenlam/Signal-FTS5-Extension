@@ -26,13 +26,18 @@ fts
 USING fts5(content, tokenize='signal_tokenizer')
 ```
 
+### Android build
+
 To build dynamic library for use in Android, please set up [cargo-ndk](https://github.com/bbqsrc/cargo-ndk), then you can build with this command
 
 ```sh
 cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 --no-strip -o ./jniLibs build --features extension --release
 ```
 
-To build dynamic library for use in Android, please set up [xcframework](https://github.com/trucnguyenlam/xcframework), then you can build with this command
+# iOS build
+
+To build dynamic library for use in iOS, please set up [xcframework](https://github.com/trucnguyenlam/xcframework),
+then you can build with this command
 
 ```sh
 xcframework --release --features extension
