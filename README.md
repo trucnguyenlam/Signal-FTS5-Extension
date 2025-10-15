@@ -31,7 +31,8 @@ USING fts5(content, tokenize='signal_tokenizer')
 To build dynamic library for use in Android, please set up [cargo-ndk](https://github.com/bbqsrc/cargo-ndk), then you can build with this command
 
 ```sh
-cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 --no-strip -o ./jniLibs build --features extension --release
+export ANDROID_NDK_HOME=<path to ndk, version+ 28.2.13676358>
+cargo ndk -t armeabi-v7a -t arm64-v8a -t x86 -t x86_64 -o ./jniLibs build --features extension --release
 ```
 
 # iOS build
